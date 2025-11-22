@@ -16,3 +16,4 @@ def extrair_dados_previsao(cidade, api_key, base_url):
     else:
         print(f"Erro na conexão! Status Code: {response.status_code}")
         return None
+    
