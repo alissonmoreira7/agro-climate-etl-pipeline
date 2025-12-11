@@ -7,7 +7,8 @@ LISTA_CIDADES = [
     'Luis Eduardo Magalhaes,BR', 
     'Barreiras,BR',              
     'Balsas,BR',                 
-    'Gurupi,BR'                   
+    'Gurupi,BR',
+                       
 ]
 
 if __name__ == "__main__":
@@ -22,7 +23,7 @@ if __name__ == "__main__":
         if dados_brutos is None:
             print(f"Falha na extração para {cidade}. Pulando...")
             continue
-
+  
     for item in dados_brutos['list']:
         registro = {
             'cidade': dados_brutos['city']['name'],
@@ -39,4 +40,4 @@ if __name__ == "__main__":
     
     print(clima_df.head())
         
-    carregar_dados(DB_CONNECTION_STRING, clima_df)
+   #carregar_dados(DB_CONNECTION_STRING, clima_df)
