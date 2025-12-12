@@ -1,7 +1,11 @@
 import os
 import pandas as pd
 from src.functions import extrair_dados_previsao, carregar_dados
-from config.settings import API_KEY, BASE_URL
+
+API_KEY = os.getenv('API_KEY')
+BASE_URL = os.getenv('BASE_URL')
+if not BASE_URL:
+    BASE_URL = "https://api.openweathermap.org/data/2.5/forecast"
 
 LISTA_CIDADES = [
     'Luis Eduardo Magalhaes,BR', 
