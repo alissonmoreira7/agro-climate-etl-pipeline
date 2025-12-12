@@ -1,4 +1,4 @@
-name: Pipeline Clima para o MATOPIBA
+name: Pipeline ETL - Previsão Climática para a Região do MATOPIBA
 
 on:
   schedule:
