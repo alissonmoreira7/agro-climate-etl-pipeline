@@ -33,7 +33,7 @@ jobs:
 
       - name: Rodar o Script
         env:
-          PYTHONPATH: ${{ github.workspace }} # Para ele achar a pasta src
+          PYTHONPATH: ${{ github.workspace }} 
         run: |
           python etl_clima.py
 
