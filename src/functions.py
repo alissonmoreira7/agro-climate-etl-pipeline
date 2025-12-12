@@ -1,6 +1,4 @@
 import requests
-from sqlalchemy import create_engine
-from sqlalchemy.orm import declarative_base
 
 def extrair_dados_previsao(cidade, api_key, base_url,):
     parametros = {
@@ -18,17 +16,6 @@ def extrair_dados_previsao(cidade, api_key, base_url,):
         print(f"Erro na conexão! Status Code: {response.status_code}")
         return None
     
-def carregar_dados(conexao, df):
-
-    engine = create_engine(conexao) 
-    
-    
-    df.to_sql(
-        name='previsao_clima', 
-        con=engine,
-        if_exists='append', 
-        index=False,
-        chunksize=5000
-    )
-    print("Carga (L) no MySQL concluída com sucesso!")
-        
+def carregar_dados(dados_csv, cabecalho, clima_df):
+    clima_df.to_csv(dados_csv, mode='a', index=False, header=cabecalho)
+    print("Dados salvos com sucesso em: {dados_csv}")

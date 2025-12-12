@@ -1,0 +1,46 @@
+name: Pipeline Clima para o MATOPIBA
+
+on:
+  schedule:
+    - cron: '0 9 * * *' # Roda todo dia às 06:00 (Brasília)
+  workflow_dispatch:      # Botão para testar manualmente
+
+jobs:
+  rodar-etl:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v3
+
+      - name: Instalar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Instalar bibliotecas
+        run: |
+          pip install pandas requests sqlalchemy
+
+      - name: Recriar arquivo de Configuração
+        run: |
+          mkdir -p config
+          echo "API_KEY = '${{ secrets.API_KEY }}'" > config/settings.py
+          echo "BASE_URL = '${{ secrets.BASE_URL }}'" >> config/settings.py
+          echo "DB_CONNECTION_STRING = '${{ secrets.DB_CONNECTION_STRING }}'" >> config/settings.py
+          
+          ls -R config
+
+      - name: Rodar o Script
+        env:
+          PYTHONPATH: ${{ github.workspace }} # Para ele achar a pasta src
+        run: |
+          python src/etl_clima.py
+
+      - name: Salvar CSV no GitHub
+        run: |
+          git config --global user.name 'Bot do Clima - MATOPIBA'
+          git config --global user.email 'bot@github.com'
+          git add *.csv || echo "Nenhum CSV novo para adicionar"
+          git commit -m "Dados atualizados: $(date)" || echo "Sem mudanças"
+          git push

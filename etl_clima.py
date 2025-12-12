@@ -1,7 +1,7 @@
+import os
 import pandas as pd
 from src.functions import extrair_dados_previsao, carregar_dados
-from config.settings import API_KEY, BASE_URL, DB_CONNECTION_STRING
-
+from config.settings import API_KEY, BASE_URL
 
 LISTA_CIDADES = [
     'Luis Eduardo Magalhaes,BR', 
@@ -38,6 +38,9 @@ if __name__ == "__main__":
 
     clima_df = pd.DataFrame(dados_tratados) 
     
-    print(clima_df.head())
-        
-   #carregar_dados(DB_CONNECTION_STRING, clima_df)
+
+    dados_csv = "dados_climaticos.csv"
+    
+    cabecalho = not os.path.isfile(dados_csv)
+    
+    carregar_dados(dados_csv, cabecalho, clima_df)
