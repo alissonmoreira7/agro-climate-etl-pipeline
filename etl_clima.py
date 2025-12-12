@@ -1,6 +1,9 @@
 import os
+from dotenv import load_dotenv
 import pandas as pd
 from src.functions import extrair_dados_previsao, carregar_dados
+
+load_dotenv()
 
 API_KEY = os.getenv('API_KEY')
 BASE_URL = os.getenv('BASE_URL')
