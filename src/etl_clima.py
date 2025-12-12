@@ -11,7 +11,7 @@ if not BASE_URL:
     BASE_URL = "https://api.openweathermap.org/data/2.5/forecast"
 9
 LISTA_CIDADES = [
-    'Luis Eduardo Magalhaes,BR', 
+    'Sao Desiderio,BR',
     'Barreiras,BR',              
     'Balsas,BR',                 
     'Gurupi,BR',
