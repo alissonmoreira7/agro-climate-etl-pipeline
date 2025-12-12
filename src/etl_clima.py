@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 import pandas as pd
-from src.functions import extrair_dados_previsao, carregar_dados
+from functions import extrair_dados_previsao, carregar_dados
 
 load_dotenv()
 

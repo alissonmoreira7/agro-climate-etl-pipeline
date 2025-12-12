@@ -5,9 +5,6 @@ on:
     - cron: '0 9 * * *' # Roda todo dia às 06:00 (Brasília)
   workflow_dispatch:      # Botão para testar manualmente
 
-permissions:
-  contents: write
-
 jobs:
   rodar-etl:
     runs-on: ubuntu-latest
@@ -41,6 +38,7 @@ jobs:
           git config --global user.email 'bot@github.com'
 
           git pull origin main || echo "Nada para puxar"
+
           git add data/*.csv || echo "Nenhum CSV novo para adicionar"
           git commit -m "Dados atualizados: $(date)" || echo "Sem mudanças para commitar"
           git push
