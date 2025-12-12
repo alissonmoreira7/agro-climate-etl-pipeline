@@ -25,9 +25,9 @@ jobs:
       - name: Recriar arquivo de Configuração
         run: |
           mkdir -p config
-          echo "API_KEY = '${{ secrets.API_KEY }}'" > config/settings.py
-          echo "BASE_URL = '${{ secrets.BASE_URL }}'" >> config/settings.py
-          echo "DB_CONNECTION_STRING = '${{ secrets.DB_CONNECTION_STRING }}'" >> config/settings.py
+          echo "API_KEY = '${{ secrets.API_KEY }}'" > settings.py
+          echo "BASE_URL = '${{ secrets.BASE_URL }}'" >> settings.py
+          echo "DB_CONNECTION_STRING = '${{ secrets.DB_CONNECTION_STRING }}'" >> settings.py
           
           ls -R config
 
