@@ -31,22 +31,22 @@ if __name__ == "__main__":
             print(f"Falha na extração para {cidade}. Pulando...")
             continue
   
-    for item in dados_brutos['list']:
-        registro = {
-            'cidade': dados_brutos['city']['name'],
-            'data_previsao': item['dt_txt'],
-            'temperatura': item['main']['temp'],
-            'umidade': item['main']['humidity'],
-            'proba_chuva': round(item.get('pop', 0) * 100, 2),
-            'latitude': dados_brutos['city']['coord']['lat'],
-            'longitude': dados_brutos['city']['coord']['lon']
-        }
-        dados_tratados.append(registro)
+        for item in dados_brutos['list']:
+            registro = {
+                'cidade': dados_brutos['city']['name'],
+                'data_previsao': item['dt_txt'],
+                'temperatura': item['main']['temp'],
+                'umidade': item['main']['humidity'],
+                'proba_chuva': round(item.get('pop', 0) * 100, 2),
+                'latitude': dados_brutos['city']['coord']['lat'],
+                'longitude': dados_brutos['city']['coord']['lon']
+            }
+            dados_tratados.append(registro)
 
     clima_df = pd.DataFrame(dados_tratados) 
     
 
-    dados_csv = "dados_climaticos.csv"
+    dados_csv = 'data/dados_climaticos.csv'
     
     cabecalho = not os.path.isfile(dados_csv)
     
