@@ -35,7 +35,7 @@ jobs:
         env:
           PYTHONPATH: ${{ github.workspace }} # Para ele achar a pasta src
         run: |
-          python src/etl_clima.py
+          python etl_clima.py
 
       - name: Salvar CSV no GitHub
         run: |
