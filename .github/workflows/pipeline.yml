@@ -20,7 +20,7 @@ jobs:
 
       - name: Instalar bibliotecas
         run: |
-          pip install pandas requests sqlalchemy
+          pip install pandas requests sqlalchemy python-dotenv
 
       - name: Recriar arquivo de Configuração
         run: |
