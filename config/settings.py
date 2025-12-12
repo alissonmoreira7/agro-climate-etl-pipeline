@@ -1,3 +1,0 @@
-API_KEY = "c2649fb0d61b205b6b52d5f621c2713b"
-BASE_URL = "https://api.openweathermap.org/data/2.5/forecast" # Endpoint de Previsão
-
